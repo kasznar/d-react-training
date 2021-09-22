@@ -1,0 +1,28 @@
+{
+  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
+  "profile": { "name": "typicode" },
+  "products": [
+    {
+      "id": 1,
+      "name": "traktor1",
+      "price": 500,
+      "quantity": 1000,
+      "description": "Szep mint egy uj traktor"
+    },
+    {
+      "id": 2,
+      "name": "traktor2",
+      "price": 500,
+      "quantity": 0,
+      "description": "Szep mint egy uj traktor"
+    },
+    {
+      "id": 3,
+      "name": "traktor3",
+      "price": 500,
+      "quantity": 12,
+      "description": "Szep mint egy uj traktor"
+    }
+  ]
+}

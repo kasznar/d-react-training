@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { CssBaseline } from "@mui/material";
+import { Header } from "./layout/Header";
+import { ProductListPage } from "./productList/ProductListPage";
+import {
+  Switch,
+  Route,
+  Redirect,
+  BrowserRouter as Router,
+} from "react-router-dom";
+import ProductPage from "./product/ProductPage";
+import { PageTitleProvider } from "./context/PageTitle";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseline />
+      <PageTitleProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/product-list">
+              <ProductListPage />
+            </Route>
+            <Route path="/product/:productId">
+              <ProductPage />
+            </Route>
+            <Redirect to="/product-list" />
+          </Switch>
+        </Router>
+      </PageTitleProvider>
+    </>
   );
 }
 
