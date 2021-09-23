@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
 import {getComments, Comment} from './api/comments';
 import  {Link, Switch, Route, BrowserRouter as Router, Redirect} from 'react-router-dom';
+import {Button} from '@mui/material'
+import {Header} from './layout/Header';
 
 
 function App() {
@@ -16,8 +17,10 @@ function App() {
   return (
     <div>
       <Router>
+        <Header/>
         <Link to="/product-list">List</Link>
         <Link to="/product">Product</Link>
+        <Button>materialos gomb</Button>
         <Switch>
           <Route path="/product-list">
             list
