@@ -24,6 +24,11 @@
       "productId": 2,
       "text": "nem egy rossz traktor de az 1-es traktor sokkal jobb",
       "id": 6
+    },
+    {
+      "productId": 1,
+      "text": "nem is jo",
+      "id": 7
     }
   ],
   "products": [
