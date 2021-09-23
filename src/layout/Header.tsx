@@ -10,10 +10,12 @@ import {
 import { Home } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { PageTitleContext } from "../context/PageTitle";
+import { UserContext } from "../context/User";
 
 export function Header() {
   const history = useHistory();
   const { title } = useContext(PageTitleContext);
+  const { isLoggedIn, login, logout } = useContext(UserContext);
 
   function handleClick() {
     history.push("/");
@@ -36,7 +38,15 @@ export function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {title}
           </Typography>
-          <Button color="inherit">Login</Button>
+          {isLoggedIn ? (
+            <Button color="inherit" onClick={logout}>
+              Logout
+            </Button>
+          ) : (
+            <Button color="inherit" onClick={login}>
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

@@ -3,7 +3,7 @@ import { Page } from "../layout/Page";
 import { useProduct } from "./useProduct";
 import { ProductInfo } from "./ProductInfo";
 import { Grid } from "@mui/material";
-import { Comments } from "./Comments";
+import { CommentsPanel } from "./CommentsPanel";
 
 export default function ProductPage() {
   const { productData, invalid } = useProduct();
@@ -19,7 +19,7 @@ export default function ProductPage() {
               <ProductInfo product={productData} />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Comments productId={productData.id} />
+              <CommentsPanel productId={productData.id} />
             </Grid>
           </Grid>
         </>

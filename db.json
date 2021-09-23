@@ -1,7 +1,31 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" },
+  "comments": [
+    {
+      "productId": 1,
+      "text": "remek traktor",
+      "id": 1
+    },
+    {
+      "productId": 2,
+      "text": "ez a traktor csak masodik lehet",
+      "id": 2
+    },
+    {
+      "productId": 3,
+      "text": "ah nem tudom miert fizetne ennyit valaki egy almas traktorert, en biztos sose vennek",
+      "id": 3
+    },
+    {
+      "productId": 3,
+      "text": "nekem nincs ilyen traktorom es sose lattam eloben, de valaki azt modnta hogy nagyon rossz",
+      "id": 5
+    },
+    {
+      "productId": 2,
+      "text": "nem egy rossz traktor de az 1-es traktor sokkal jobb",
+      "id": 6
+    }
+  ],
   "products": [
     {
       "id": 1,

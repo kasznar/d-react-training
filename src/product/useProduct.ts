@@ -1,15 +1,23 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getProductById, Product } from "../api/product";
+import { PageTitleContext } from "../context/PageTitle";
 
 export const useProduct = () => {
-  let { productId } = useParams<{ productId: string }>();
+  const { productId } = useParams<{ productId: string }>();
   const [invalid, setInvalid] = useState(false);
   const [productData, setProductData] = useState<Product | null>(null);
+  const { setTitle } = useContext(PageTitleContext);
 
   function isNormalInteger(str: string) {
     return /^\+?(0|[1-9]\d*)$/.test(str);
   }
+
+  useEffect(() => {
+    if (productData?.name) {
+      setTitle(productData.name);
+    }
+  }, [setTitle, productData]);
 
   useEffect(() => {
     let id = null;

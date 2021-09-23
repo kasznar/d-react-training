@@ -11,24 +11,27 @@ import {
 } from "react-router-dom";
 import ProductPage from "./product/ProductPage";
 import { PageTitleProvider } from "./context/PageTitle";
+import { UserProvider } from "./context/User";
 
 function App() {
   return (
     <>
       <CssBaseline />
       <PageTitleProvider>
-        <Router>
-          <Header />
-          <Switch>
-            <Route path="/product-list">
-              <ProductListPage />
-            </Route>
-            <Route path="/product/:productId">
-              <ProductPage />
-            </Route>
-            <Redirect to="/product-list" />
-          </Switch>
-        </Router>
+        <UserProvider>
+          <Router>
+            <Header />
+            <Switch>
+              <Route path="/product-list">
+                <ProductListPage />
+              </Route>
+              <Route path="/product/:productId">
+                <ProductPage />
+              </Route>
+              <Redirect to="/product-list" />
+            </Switch>
+          </Router>
+        </UserProvider>
       </PageTitleProvider>
     </>
   );
