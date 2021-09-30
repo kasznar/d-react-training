@@ -6,7 +6,9 @@ export interface Comment {
     id: number;
 }
 
-export const getComments = async () => {
-     const res = await axios.get<Comment[]>('/comments');
+export const getComments = async (productId: string) => {
+     const res = await axios.get<Comment[]>('/comments', {
+         params: {productId, _sort: 'id', _order: 'desc'}
+     });
      return res.data;
 }

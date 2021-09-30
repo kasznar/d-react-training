@@ -4,17 +4,10 @@ import  {Link, Switch, Route, BrowserRouter as Router, Redirect} from 'react-rou
 import {Button} from '@mui/material'
 import {Header} from './layout/Header';
 import {ProductListPage} from "./productList/ProductListPage";
+import {ProductPage} from "./product/ProductPage";
 
 
 function App() {
-  const [comments, setCommnets] = useState<Comment[]>([]);
-
-  useEffect(()=>{
-    getComments().then((data)=>{
-      setCommnets(data);
-    })
-  },[])
-
   return (
     <div>
       <Router>
@@ -26,8 +19,8 @@ function App() {
           <Route path="/product-list">
             <ProductListPage/>
           </Route>
-          <Route path="/product">
-            <pre>{JSON.stringify(comments, null, 4)}</pre>
+          <Route path="/product/:productId">
+            <ProductPage/>
           </Route>
           <Redirect to="/product-list" />
         </Switch>

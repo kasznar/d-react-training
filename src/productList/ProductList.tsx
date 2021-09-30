@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {getProducts, Product} from "../api/products";
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import {Paper, Table, TableBody, TableContainer} from "@mui/material";
+import {ProductListTableHead} from "./ProductListTableHead";
+import {ProductListRow} from "./ProductListRow";
 
 
 export const ProductList = () => {
@@ -12,19 +14,12 @@ export const ProductList = () => {
 
     return (<TableContainer component={Paper}>
         <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Price</TableCell>
-                    <TableCell>In stock</TableCell>
-                </TableRow>
-            </TableHead>
+            <ProductListTableHead/>
             <TableBody>
-                {products.map((product)=> (<TableRow key={product.id}>
-                    <TableCell>{product.name}</TableCell>
-                    <TableCell>{product.price}</TableCell>
-                    <TableCell>{product.quantity > 0 ? 'yes' : 'no'}</TableCell>
-                </TableRow>))}
+                {products.map((product)=> (
+                    <ProductListRow key={product.id} product={product}/>)
+                )
+                }
             </TableBody>
         </Table>
     </TableContainer>)
