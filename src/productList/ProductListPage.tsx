@@ -1,7 +1,10 @@
 import React from 'react';
 import {Page} from "../layout/Page";
+import {ProductList} from "./ProductList";
 
 
 export const ProductListPage = () => {
-    return (<Page>List</Page>)
+    return (<Page>
+       <ProductList/>
+    </Page>)
 }

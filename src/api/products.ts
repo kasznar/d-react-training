@@ -1,6 +1,14 @@
 import axios from "axios";
 
+export interface Product {
+    id: number;
+    name: string;
+    price: number;
+    quantity: number;
+    description: string;
+}
 
 export async function getProducts() {
-    const res = await axios.get("/products")
+    const res = await axios.get<Product[]>("/products")
+    return res.data;
 }
