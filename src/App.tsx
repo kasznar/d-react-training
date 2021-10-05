@@ -1,26 +1,30 @@
-import React, {useState, useEffect} from 'react';
-import {getComments, Comment} from './api/comments';
-import  {Link, Switch, Route, BrowserRouter as Router, Redirect} from 'react-router-dom';
-import {Button} from '@mui/material'
-import {Header} from './layout/Header';
-import {ProductListPage} from "./productList/ProductListPage";
-import {ProductPage} from "./product/ProductPage";
-
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Link,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import { Button } from "@mui/material";
+import { Header } from "./layout/Header";
+import { ProductListPage } from "./productList/ProductListPage";
+import { ProductPage } from "./product/ProductPage";
 
 function App() {
   return (
     <div>
       <Router>
-        <Header/>
+        <Header />
         <Link to="/product-list">List</Link>
         <Link to="/product">Product</Link>
         <Button>materialos gomb</Button>
         <Switch>
           <Route path="/product-list">
-            <ProductListPage/>
+            <ProductListPage />
           </Route>
           <Route path="/product/:productId">
-            <ProductPage/>
+            <ProductPage />
           </Route>
           <Redirect to="/product-list" />
         </Switch>
