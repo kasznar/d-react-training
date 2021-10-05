@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getProducts, Product } from "../api/products";
-import { Paper, Table, TableBody, TableContainer } from "@mui/material";
-import { ProductListTableHead } from "./ProductListTableHead";
-import { ProductListRow } from "./ProductListRow";
+import React from "react";
+import {Paper, Table, TableBody, TableContainer} from "@mui/material";
+import {ProductListTableHead} from "./ProductListTableHead";
+import {ProductListRow} from "./ProductListRow";
+import {useProductList} from "./useProductList";
 
 export const ProductList = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    getProducts().then(setProducts);
-  }, [setProducts]);
+  const [products] = useProductList();
 
   return (
     <TableContainer component={Paper}>

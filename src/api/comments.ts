@@ -1,9 +1,9 @@
 import axios from "axios";
 
 export interface Comment {
-  productId: number;
+  productId: string;
   text: string;
-  id: number;
+  id?: string;
 }
 
 export const getComments = async (productId: string) => {
@@ -12,3 +12,8 @@ export const getComments = async (productId: string) => {
   });
   return res.data;
 };
+
+export async function postComments(newComment: Comment) {
+  const res = await axios.post("/comments", newComment);
+  return res.data;
+}

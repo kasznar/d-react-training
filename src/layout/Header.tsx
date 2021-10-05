@@ -1,8 +1,15 @@
 import React, { FC } from "react";
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { Home } from "@mui/icons-material";
+import {useHistory} from "react-router-dom";
 
 export const Header: FC = () => {
+  const history = useHistory();
+
+  function handleClick() {
+    history.push('/');
+  }
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -10,10 +17,11 @@ export const Header: FC = () => {
           size="large"
           edge="start"
           color="inherit"
-          aria-label="menu"
+          aria-label="home"
           sx={{ mr: 2 }}
+          onClick={handleClick}
         >
-          <Menu />
+          <Home />
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           News
