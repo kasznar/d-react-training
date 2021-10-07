@@ -1,10 +1,12 @@
-import React, { FC } from "react";
+import React, {FC, useContext} from "react";
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { Home } from "@mui/icons-material";
 import {useHistory} from "react-router-dom";
+import {PageTitleContext} from "../context/PageTitle";
 
 export const Header: FC = () => {
   const history = useHistory();
+  const {title}  = useContext(PageTitleContext);
 
   function handleClick() {
     history.push('/');
@@ -24,7 +26,7 @@ export const Header: FC = () => {
           <Home />
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          News
+          {title}
         </Typography>
         <Button color="inherit">Login</Button>
       </Toolbar>

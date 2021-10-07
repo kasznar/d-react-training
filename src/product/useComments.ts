@@ -19,9 +19,11 @@ export const useComments = (productId: string) => {
     }
 
     async function handleClick() {
-        await postComments({productId, text: newComment});
-        setNewComment('');
-        await fetchComments();
+        if (newComment.trim()) {
+            await postComments({productId, text: newComment});
+            setNewComment('');
+            await fetchComments();
+        }
     }
 
     return {comments, handleChange, handleClick, newComment}
