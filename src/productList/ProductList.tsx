@@ -1,8 +1,8 @@
 import React from "react";
-import {Paper, Table, TableBody, TableContainer} from "@mui/material";
-import {ProductListTableHead} from "./ProductListTableHead";
-import {ProductListRow} from "./ProductListRow";
-import {useProductList} from "./useProductList";
+import { Paper, Table, TableBody, TableContainer } from "@mui/material";
+import { ProductListTableHead } from "./ProductListTableHead";
+import { ProductListRow } from "./ProductListRow";
+import { useProductList } from "./useProductList";
 
 export const ProductList = () => {
   const [products] = useProductList();

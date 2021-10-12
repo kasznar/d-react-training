@@ -1,20 +1,21 @@
-import {createContext, FC, useState} from "react";
+import { createContext, FC, useState } from "react";
 
 export interface PageTitle {
-    title: string;
-    setTitle: (value: string) => void;
+  title: string;
+  setTitle: (value: string) => void;
 }
 
 export const PageTitleContext = createContext<PageTitle>({
-    title: "",
-    setTitle: () => {},
+  title: "",
+  setTitle: () => {},
 });
 
+export const PageTitleProvider: FC = ({ children }) => {
+  const [title, setTitle] = useState("");
 
-export const PageTitleProvider: FC = ({children}) => {
-    const [title, setTitle] = useState("");
-
-    return (<PageTitleContext.Provider value={{title, setTitle}}>
-        {children}
-    </PageTitleContext.Provider>)
-}
+  return (
+    <PageTitleContext.Provider value={{ title, setTitle }}>
+      {children}
+    </PageTitleContext.Provider>
+  );
+};

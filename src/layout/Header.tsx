@@ -1,15 +1,15 @@
-import React, {FC, useContext} from "react";
+import React, { FC, useContext } from "react";
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { Home } from "@mui/icons-material";
-import {useHistory} from "react-router-dom";
-import {PageTitleContext} from "../context/PageTitle";
+import { useHistory } from "react-router-dom";
+import { PageTitleContext } from "../context/PageTitle";
 
 export const Header: FC = () => {
   const history = useHistory();
-  const {title}  = useContext(PageTitleContext);
+  const { title } = useContext(PageTitleContext);
 
   function handleClick() {
-    history.push('/');
+    history.push("/");
   }
 
   return (
