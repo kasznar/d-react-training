@@ -31,16 +31,15 @@ export const LoginDialog: FC<{
   };
 
   const handleSubmit = () => {
-      if (values.email.trim() && values.password.trim()) {
-          onSubmit(values.email, values.password);
-      }
+    if (values.email.trim() && values.password.trim()) {
+      onSubmit(values.email, values.password);
+    }
   };
 
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>Login</DialogTitle>
       <DialogContent>
-        {values.email} - {values.password}
         <DialogContentText>Enter your email and password</DialogContentText>
         <TextField
           autoFocus

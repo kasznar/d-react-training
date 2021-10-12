@@ -1,9 +1,11 @@
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import {ChangeEvent, useCallback, useContext, useEffect, useState} from "react";
 import { Comment, getComments, postComments } from "../api/comments";
+import {UserContext} from "../context/User";
 
 export const useComments = (productId: string) => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
+  const {isLoggedIn, login} = useContext(UserContext);
 
   const fetchComments = useCallback(async () => {
     const res = await getComments(productId);
@@ -19,6 +21,11 @@ export const useComments = (productId: string) => {
   }
 
   async function handleClick() {
+    if (!isLoggedIn) {
+      login();
+      return
+    }
+
     if (newComment.trim()) {
       await postComments({ productId, text: newComment });
       setNewComment("");

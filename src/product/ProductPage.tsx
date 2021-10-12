@@ -14,7 +14,7 @@ export const ProductPage = () => {
 
   useEffect(() => {
     getProductById(productId).then(setProduct);
-  }, []);
+  }, [productId, setProduct]);
 
   useEffect(() => {
     if (product) {

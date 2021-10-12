@@ -3,13 +3,28 @@ import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { Home } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { PageTitleContext } from "../context/PageTitle";
+import { UserContext } from "../context/User";
 
 export const Header: FC = () => {
   const history = useHistory();
   const { title } = useContext(PageTitleContext);
+  const { isLoggedIn, login, logout } = useContext(UserContext);
 
   function handleClick() {
     history.push("/");
+  }
+
+  let loginButton = (
+    <Button color="inherit" onClick={login}>
+      Login
+    </Button>
+  );
+  if (isLoggedIn) {
+    loginButton = (
+      <Button color="inherit" onClick={logout}>
+        Logout
+      </Button>
+    );
   }
 
   return (
@@ -28,7 +43,7 @@ export const Header: FC = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {title}
         </Typography>
-        <Button color="inherit">Login</Button>
+        {loginButton}
       </Toolbar>
     </AppBar>
   );

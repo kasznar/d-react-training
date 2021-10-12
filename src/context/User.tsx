@@ -15,7 +15,7 @@ export const UserContext = createContext<User>({
 
 export const UserProvider: FC = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(true);
+  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
 
   const login = () => {
     setIsLoginDialogOpen(true);
@@ -30,7 +30,7 @@ export const UserProvider: FC = ({ children }) => {
       setIsLoggedIn(true);
       setIsLoginDialogOpen(false);
     }
-  }
+  };
 
   return (
     <>
