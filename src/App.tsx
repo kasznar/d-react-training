@@ -1,27 +1,15 @@
-import React, { FC } from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
-import { ProductListPage } from "./features/productList/components/ProductListPage";
-import { ProductPage } from "./features/product/components/ProductPage";
-import { PageTitleProvider } from "./context/PageTitle";
-import { UserProvider } from "./features/user/User";
-import { Header } from "./components/layout/Header";
-
-const AppProviders: FC = ({ children }) => (
-  <PageTitleProvider>
-    <UserProvider>{children}</UserProvider>
-  </PageTitleProvider>
-);
+import React from "react";
+import {BrowserRouter as Router, Redirect, Route, Switch,} from "react-router-dom";
+import {ProductListPage} from "./features/productList/components/ProductListPage";
+import {ProductPage} from "./features/product/components/ProductPage";
+import {Header} from "./components/layout/Header";
+import {LoginDialog} from "./features/user/components/LoginDialog";
 
 function App() {
   return (
-    <AppProviders>
       <Router>
         <Header />
+          <LoginDialog/>
         <Switch>
           <Route path="/product-list">
             <ProductListPage />
@@ -32,7 +20,6 @@ function App() {
           <Redirect to="/product-list" />
         </Switch>
       </Router>
-    </AppProviders>
   );
 }
 

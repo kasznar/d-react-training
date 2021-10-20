@@ -8,6 +8,9 @@ import {
   DialogTitle,
   TextField,
 } from "@mui/material";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../../../store";
+import {closeLoginDialog, login} from "../actions";
 
 interface State {
   email: string;
@@ -16,11 +19,9 @@ interface State {
 
 type InputEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
-export const LoginDialog: FC<{
-  open: boolean;
-  onClose: () => void;
-  onSubmit: (email: string, password: string) => void;
-}> = ({ open, onClose, onSubmit }) => {
+export const LoginDialog: FC = () => {
+  const dispatch = useDispatch();
+  const open = useAppSelector(state=> state.user.isLoginDialogOpen);
   const [values, setValues] = useState<State>({
     email: "",
     password: "",
@@ -32,9 +33,16 @@ export const LoginDialog: FC<{
 
   const handleSubmit = () => {
     if (values.email.trim() && values.password.trim()) {
-      onSubmit(values.email, values.password);
+      if (values.password === "admin") {
+        dispatch(login());
+        dispatch(closeLoginDialog())
+      }
     }
   };
+
+  const onClose = () => {
+    dispatch(closeLoginDialog())
+  }
 
   return (
     <Dialog open={open} onClose={onClose}>

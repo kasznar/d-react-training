@@ -1,18 +1,18 @@
-import React, { ChangeEvent, FC, useContext, useEffect, useState } from "react";
-import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { fetchCommentsThunk } from "../actions/thunks/fetchCommentsThunk";
-import { useParams } from "react-router-dom";
-import { UserContext } from "../../user/User";
-import { fetchAddCommentThunk } from "../actions/thunks/fetchAddCommentThunk";
-import { useAppSelector } from "../../../store";
+import React, {ChangeEvent, FC, useEffect, useState} from "react";
+import {Box, Button, Paper, TextField, Typography} from "@mui/material";
+import {useDispatch} from "react-redux";
+import {fetchCommentsThunk} from "../actions/thunks/fetchCommentsThunk";
+import {useParams} from "react-router-dom";
+import {fetchAddCommentThunk} from "../actions/thunks/fetchAddCommentThunk";
+import {useAppSelector} from "../../../store";
+import {openLoginDialog} from "../../user/actions";
 
 export const CommentsPanel: FC = () => {
   const [newComment, setNewComment] = useState("");
   const comments = useAppSelector((state) => state.product.comments);
+  const isLoggedIn = useAppSelector((state)=> state.user.isLoggedIn);
   const dispatch = useDispatch();
   const { productId } = useParams<{ productId: string }>();
-  const { isLoggedIn, login } = useContext(UserContext);
 
   useEffect(() => {
     dispatch(fetchCommentsThunk(productId));
@@ -24,7 +24,7 @@ export const CommentsPanel: FC = () => {
 
   async function handleClick() {
     if (!isLoggedIn) {
-      login();
+      dispatch(openLoginDialog())
       return;
     }
 
