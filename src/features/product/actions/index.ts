@@ -1,10 +1,13 @@
-import {ProductActionTypes} from './actionTypes';
-import {FetchProductSuccessAction} from "./fetchProductSuccess";
-import {FetchCommentsSuccessAction} from "./fetchCommentsSuccess";
-import {ClearProductAction} from "./clearProduct";
+import { ProductActionTypes } from "./actionTypes";
+import { FetchProductSuccessAction } from "./fetchProductSuccess";
+import { FetchCommentsSuccessAction } from "./fetchCommentsSuccess";
+import { ClearProductAction } from "./clearProduct";
 
-export {ProductActionTypes};
+export { ProductActionTypes };
 
-type ProductAction = FetchProductSuccessAction | FetchCommentsSuccessAction | ClearProductAction;
+type ProductAction =
+  | FetchProductSuccessAction
+  | FetchCommentsSuccessAction
+  | ClearProductAction;
 
 export default ProductAction;

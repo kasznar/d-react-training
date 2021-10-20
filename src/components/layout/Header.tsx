@@ -2,14 +2,13 @@ import React, { FC, useContext } from "react";
 import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
 import { Home } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
-import { PageTitleContext } from "../../context/PageTitle";
 import { UserContext } from "../../features/user/User";
-import {useAppSelector} from "../../store/hooks";
-import {selectProductName} from "../../features/product/productSlice";
+import { selectProductName } from "../../features/product/productSlice";
+import { useAppSelector } from "../../store";
 
 export const Header: FC = () => {
   const history = useHistory();
-  const title = useAppSelector(selectProductName)
+  const title = useAppSelector(selectProductName);
   const { isLoggedIn, login, logout } = useContext(UserContext);
 
   function handleClick() {

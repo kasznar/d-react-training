@@ -5,11 +5,11 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { Header } from "./ui-kit/layout/Header";
-import { ProductListPage } from "./features/productList/ProductListPage";
+import { ProductListPage } from "./features/productList/components/ProductListPage";
 import { ProductPage } from "./features/product/components/ProductPage";
 import { PageTitleProvider } from "./context/PageTitle";
 import { UserProvider } from "./features/user/User";
+import { Header } from "./components/layout/Header";
 
 const AppProviders: FC = ({ children }) => (
   <PageTitleProvider>

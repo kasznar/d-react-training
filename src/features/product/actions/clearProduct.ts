@@ -1,9 +1,9 @@
-import {ProductActionTypes} from "./actionTypes";
+import { ProductActionTypes } from "./actionTypes";
 
 export interface ClearProductAction {
-    type: ProductActionTypes.CLEAR;
+  type: ProductActionTypes.CLEAR;
 }
 
 export const clearProduct = (): ClearProductAction => ({
-    type: ProductActionTypes.CLEAR
-})
+  type: ProductActionTypes.CLEAR,
+});
