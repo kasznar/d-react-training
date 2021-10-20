@@ -5,13 +5,13 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import { Header } from "./layout/Header";
-import { ProductListPage } from "./productList/ProductListPage";
-import { ProductPage } from "./product/ProductPage";
+import { Header } from "./ui-kit/layout/Header";
+import { ProductListPage } from "./features/productList/ProductListPage";
+import { ProductPage } from "./features/product/components/ProductPage";
 import { PageTitleProvider } from "./context/PageTitle";
-import { UserProvider } from "./context/User";
+import { UserProvider } from "./features/user/User";
 
-const Provider: FC = ({ children }) => (
+const AppProviders: FC = ({ children }) => (
   <PageTitleProvider>
     <UserProvider>{children}</UserProvider>
   </PageTitleProvider>
@@ -19,7 +19,7 @@ const Provider: FC = ({ children }) => (
 
 function App() {
   return (
-    <Provider>
+    <AppProviders>
       <Router>
         <Header />
         <Switch>
@@ -32,7 +32,7 @@ function App() {
           <Redirect to="/product-list" />
         </Switch>
       </Router>
-    </Provider>
+    </AppProviders>
   );
 }
 

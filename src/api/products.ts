@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export interface Product {
-  id?: number;
+  id?: string;
   name: string;
   price: number;
   quantity: number;
@@ -18,7 +18,7 @@ export async function getProductById(id: string) {
   return res.data;
 }
 
-export async function postComments(newProduct: Product) {
+export async function postProduct(newProduct: Product) {
   const res = await axios.post("/products", newProduct);
   return res.data;
 }

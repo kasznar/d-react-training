@@ -1,5 +1,5 @@
 import { createContext, FC, useState } from "react";
-import { LoginDialog } from "../login/LoginDialog";
+import { LoginDialog } from "./components/LoginDialog";
 
 export interface User {
   isLoggedIn: boolean;
