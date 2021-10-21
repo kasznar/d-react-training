@@ -6,7 +6,7 @@ import {
   Switch,
 } from "react-router-dom";
 import { Header } from "./layout/Header";
-import { ProductListPage } from "./productList/ProductListPage";
+import { ProductListPage } from "./features/productList/components/ProductListPage";
 import { ProductPage } from "./product/ProductPage";
 import { PageTitleProvider } from "./context/PageTitle";
 import { UserProvider } from "./context/User";
