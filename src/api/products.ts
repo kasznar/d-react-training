@@ -9,16 +9,16 @@ export interface Product {
 }
 
 export async function getProducts() {
-  const res = await axios.get<Product[]>("/products");
+  const res = await axios.get<Product[]>("/api/products");
   return res.data;
 }
 
 export async function getProductById(id: string) {
-  const res = await axios.get<Product>(`/products/${id}`);
+  const res = await axios.get<Product>(`/api/products/${id}`);
   return res.data;
 }
 
 export async function postProduct(newProduct: Product) {
-  const res = await axios.post("/products", newProduct);
+  const res = await axios.post("/api/products", newProduct);
   return res.data;
 }
