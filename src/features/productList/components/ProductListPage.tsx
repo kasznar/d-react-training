@@ -1,18 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import { Page } from "../../../layout/Page";
-import { ProductList } from "./ProductList";
-import { PageTitleContext } from "../../../context/PageTitle";
+import React, {useEffect} from "react";
+import {ProductList} from "./ProductList";
 import {useDispatch} from "react-redux";
 import {fetchProductListThunk} from "../actions/thunks/fetchProductListThunk";
+import {Page} from "../../../components/layout/Page";
 
 export const ProductListPage = () => {
-  const { setTitle } = useContext(PageTitleContext);
   const dispatch = useDispatch();
-
-
-  useEffect(() => {
-    setTitle("");
-  }, [setTitle]);
 
   useEffect(()=>{
     dispatch(fetchProductListThunk());

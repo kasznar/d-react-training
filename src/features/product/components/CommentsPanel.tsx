@@ -5,12 +5,14 @@ import {useDispatch} from "react-redux";
 import {fetchCommentsThunk} from "../actions/thunks/fetchCommentsThunk";
 import {fetchAddCommentThunk} from "../actions/thunks/fetchAddCommentThunk";
 import {useAppSelector} from "../../../store";
+import {openLoginDialog} from "../../user/actions/openLoginDialog";
 
 export const CommentsPanel: FC = () => {
     const [newComment, setNewComment] = useState('');
     const {productId} = useParams<{productId: string}>();
     const dispatch = useDispatch();
     const comments = useAppSelector(state => state.product.comments);
+    const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
 
     useEffect(()=>{
         dispatch(fetchCommentsThunk(productId));
@@ -21,6 +23,15 @@ export const CommentsPanel: FC = () => {
     }
 
     function handleClick() {
+        if (!isLoggedIn) {
+            dispatch(openLoginDialog());
+            return;
+        }
+
+        if (!newComment.trim()) {
+            return;
+        }
+
         dispatch(fetchAddCommentThunk({productId, text: newComment}));
         setNewComment("");
     }

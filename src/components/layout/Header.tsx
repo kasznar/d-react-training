@@ -1,29 +1,32 @@
-import React, { FC, useContext } from "react";
-import { AppBar, Toolbar, IconButton, Typography, Button } from "@mui/material";
-import { Home } from "@mui/icons-material";
-import { useHistory } from "react-router-dom";
-import { PageTitleContext } from "../context/PageTitle";
-import { UserContext } from "../context/User";
-import {useAppSelector} from "../store";
+import React, {FC} from "react";
+import {AppBar, Button, IconButton, Toolbar, Typography} from "@mui/material";
+import {Home} from "@mui/icons-material";
+import {useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../../store";
+import {openLoginDialog} from "../../features/user/actions/openLoginDialog";
+import {logout} from "../../features/user/actions/logout";
 
 export const Header: FC = () => {
   const history = useHistory();
 
   const title = useAppSelector(state => state.product.info?.name)
-  const { isLoggedIn, login, logout } = useContext(UserContext);
+  const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
+  const dispatch = useDispatch();
+
 
   function handleClick() {
     history.push("/");
   }
 
   let loginButton = (
-    <Button color="inherit" onClick={login}>
+    <Button color="inherit" onClick={()=> dispatch(openLoginDialog())}>
       Login
     </Button>
   );
   if (isLoggedIn) {
     loginButton = (
-      <Button color="inherit" onClick={logout}>
+      <Button color="inherit" onClick={()=> dispatch(logout())}>
         Logout
       </Button>
     );

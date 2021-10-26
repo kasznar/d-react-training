@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import {CommentsPanel} from "./CommentsPanel";
 import {ProductInfo} from "./ProductInfo";
 import {Grid} from "@mui/material";
-import {Page} from "../../../layout/Page";
 import {useDispatch} from "react-redux";
 import {clearProduct} from "../actions/clearProduct";
+import {Page} from "../../../components/layout/Page";
 
 
 export const ProductPage = () => {
@@ -14,7 +14,7 @@ export const ProductPage = () => {
     return ()=>{
       dispatch(clearProduct())
     }
-  },[])
+  },[dispatch])
 
   return (
     <Page>
