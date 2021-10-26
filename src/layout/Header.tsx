@@ -4,10 +4,12 @@ import { Home } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { PageTitleContext } from "../context/PageTitle";
 import { UserContext } from "../context/User";
+import {useAppSelector} from "../store";
 
 export const Header: FC = () => {
   const history = useHistory();
-  const { title } = useContext(PageTitleContext);
+
+  const title = useAppSelector(state => state.product.info?.name)
   const { isLoggedIn, login, logout } = useContext(UserContext);
 
   function handleClick() {

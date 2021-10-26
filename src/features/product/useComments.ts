@@ -1,8 +1,5 @@
-import {ChangeEvent, useCallback, useContext, useEffect, useState} from "react";
-import { Comment, getComments, postComments } from "../api/comments";
-import {UserContext} from "../context/User";
-
 export const useComments = (productId: string) => {
+  /*
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
   const {isLoggedIn, login} = useContext(UserContext);
@@ -34,4 +31,5 @@ export const useComments = (productId: string) => {
   }
 
   return { comments, handleChange, handleClick, newComment };
+   */
 };
