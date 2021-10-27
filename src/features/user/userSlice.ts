@@ -1,42 +1,35 @@
-import UserActions, {UserActionTypes} from "./actions";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface UserSliceState {
-    isLoginDialogOpen: boolean;
-    isLoggedIn: boolean;
+  isLoginDialogOpen: boolean;
+  isLoggedIn: boolean;
 }
 
 const initialState: UserSliceState = {
-    isLoggedIn: false,
-    isLoginDialogOpen: false,
-}
+  isLoggedIn: false,
+  isLoginDialogOpen: false,
+};
 
-export const userSlice = (state = initialState, action: UserActions): UserSliceState => {
-    switch (action.type) {
-        case UserActionTypes.OPEN_DIALOG: {
-            return {
-                ...state,
-                isLoginDialogOpen: true,
-            }
-        }
-        case UserActionTypes.CLOSE_DIALOG: {
-            return {
-                ...state,
-                isLoginDialogOpen: false,
-            }
-        }
-        case UserActionTypes.LOGIN: {
-            return {
-                ...state,
-                isLoggedIn: true
-            }
-        }
-        case UserActionTypes.LOGOUT: {
-            return {
-                ...state,
-                isLoggedIn: false
-            }
-        }
-        default:
-            return state;
-    }
-}
+const userSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    login(state) {
+      state.isLoggedIn = true;
+    },
+    logout(state) {
+      state.isLoggedIn = false;
+    },
+    openLoginDialog(state) {
+      state.isLoginDialogOpen = true;
+    },
+    closeLoginDialog(state) {
+      state.isLoginDialogOpen = false;
+    },
+  },
+});
+
+export const { logout, login, openLoginDialog, closeLoginDialog } =
+  userSlice.actions;
+
+export default userSlice.reducer;

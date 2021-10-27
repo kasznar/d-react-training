@@ -1,6 +1,6 @@
-import { Product } from "../../api/products";
-import ProductListActions, { ProductListActionTypes } from "./actions";
+import { getProducts, Product } from "../../api/products";
 import { RootState } from "../../store";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface ProductListState {
   items: Product[];
@@ -10,17 +10,24 @@ const initialState: ProductListState = {
   items: [],
 };
 
-export const productListSlice = (
-  state = initialState,
-  action: ProductListActions
-): ProductListState => {
-  if (action.type === ProductListActionTypes.FETCH_SUCCESS) {
-    return {
-      items: action.payload,
-    };
+export const fetchProductListThunk = createAsyncThunk(
+  "productList/fetchProducts",
+  async () => {
+    return await getProducts();
   }
+);
 
-  return state;
-};
+const productListSlice = createSlice({
+  name: "productList",
+  initialState,
+  reducers: {},
+  extraReducers(builder) {
+    builder.addCase(fetchProductListThunk.fulfilled, (state, action) => {
+      state.items = action.payload;
+    });
+  },
+});
+
+export default productListSlice.reducer;
 
 export const selectProductList = (state: RootState) => state.productList.items;

@@ -1,16 +1,15 @@
-import React, {ChangeEvent, FC, useEffect, useState} from "react";
-import {Box, Button, Paper, TextField, Typography} from "@mui/material";
-import {useDispatch} from "react-redux";
-import {fetchCommentsThunk} from "../actions/thunks/fetchCommentsThunk";
-import {useParams} from "react-router-dom";
-import {fetchAddCommentThunk} from "../actions/thunks/fetchAddCommentThunk";
-import {useAppSelector} from "../../../store";
-import {openLoginDialog} from "../../user/actions";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
+import { Box, Button, Paper, TextField, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useAppSelector } from "../../../store";
+import { openLoginDialog } from "../../user/userSlice";
+import { fetchAddCommentThunk, fetchCommentsThunk } from "../productSlice";
 
 export const CommentsPanel: FC = () => {
   const [newComment, setNewComment] = useState("");
   const comments = useAppSelector((state) => state.product.comments);
-  const isLoggedIn = useAppSelector((state)=> state.user.isLoggedIn);
+  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
   const dispatch = useDispatch();
   const { productId } = useParams<{ productId: string }>();
 
@@ -24,7 +23,7 @@ export const CommentsPanel: FC = () => {
 
   async function handleClick() {
     if (!isLoggedIn) {
-      dispatch(openLoginDialog())
+      dispatch(openLoginDialog());
       return;
     }
 

@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { CommentsPanel } from "./CommentsPanel";
 import { ProductInfo } from "./ProductInfo";
 import { Grid } from "@mui/material";
-import { clearProduct } from "../actions/clearProduct";
 import { useAppDispatch } from "../../../store";
 import { Page } from "../../../components/layout/Page";
+import { clearProduct } from "../productSlice";
 
 export const ProductPage = () => {
   const dispatch = useAppDispatch();

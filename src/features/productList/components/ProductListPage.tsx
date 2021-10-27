@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ProductList } from "./ProductList";
 import { Page } from "../../../components/layout/Page";
 import { useDispatch } from "react-redux";
-import { fetchProductListThunk } from "../actions/thunks/fetchProductListThunk";
+import { fetchProductListThunk } from "../productListSlice";
 
 export const ProductListPage = () => {
   const dispatch = useDispatch();

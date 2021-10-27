@@ -9,9 +9,9 @@ import {
 import tractor from "../tractor.jpeg";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { fetchProductThunk } from "../actions/thunks/fetchProductThunk";
 import { Product } from "../../../api/products";
 import { useAppSelector } from "../../../store";
+import { fetchProductThunk } from "../productSlice";
 
 export const ProductInfo: FC = () => {
   const { productId } = useParams<{ productId: string }>();
