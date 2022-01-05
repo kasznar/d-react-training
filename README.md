@@ -1,19 +1,3 @@
-# Practise App
+# Sample app from my react-redux course
 
-## Start
-
-`yarn install`
-
-`yarn start:mock`
-
-`yarn start`
-
-## app
-
-- lista termekekrol
-  - lista szures?
-- termek oldal
-  - comment?
-  - like?
-- uj termek letrehozasa? form
-- valami modal? bejelentkezes talan?
+## there are different implementations with context api only, redux and redux-toolkit
